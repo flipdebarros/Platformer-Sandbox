@@ -8,7 +8,7 @@ public enum InputType {
 }
 
 [CreateAssetMenu(menuName = "Behaviour")]
-public class Behaviour : ScriptableObject {
+public class BehaviourMachine : ScriptableObject {
 
 	public bool enabled { get; private set; }
 	
@@ -49,9 +49,9 @@ public class Behaviour : ScriptableObject {
 		_animation.Update(_actor, _brain);
 	}
 	
-	public void HandleInput(InputType input, bool allowBuffer = true) {
+	public void HandleInput(InputType input) {
 		if (!enabled) return;
 		_animation.HandleInput(input, _brain);
-		CurrentState = CurrentState.OnHandleInput(_actor, _brain, input, allowBuffer);
+		CurrentState = CurrentState.OnHandleInput(_actor, _brain, input);
 	}
 }

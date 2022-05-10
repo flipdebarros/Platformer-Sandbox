@@ -51,7 +51,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""id"": ""244a2858-b946-4e67-93c6-fb545aa93ebf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Tap,SlowTap"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {

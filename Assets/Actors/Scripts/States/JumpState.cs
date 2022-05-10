@@ -16,7 +16,7 @@ public class JumpState : BehaviourState {
 		actor.VelocityY = _initYVelocity;
 		actor.Gravity = _g;
 		_startJumpTime = Time.time;
-		
+
 		brain.LeaveGround();
 	}
 
@@ -39,10 +39,7 @@ public class JumpState : BehaviourState {
 		actor.VelocityY = terminalVelocity;
 	}
 	
-	public override BehaviourState OnHandleInput(Actor actor, Brain brain, InputType type, bool allowBuffer) {
-		if(allowBuffer && type is InputType.JumpStarted && !brain.Grounded)
-			brain.BufferUntilGrounded(type);
-		
+	public override BehaviourState OnHandleInput(Actor actor, Brain brain, InputType type) {
 		if (type is not InputType.JumpEnded)
 			return type switch {
 				InputType.Grounded when brain.Grounded => new MovementState(),

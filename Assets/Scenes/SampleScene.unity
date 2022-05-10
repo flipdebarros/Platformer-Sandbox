@@ -9020,7 +9020,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 4.21875
+  orthographic size: 3.375
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -9044,7 +9044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286497426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.1499999, y: -9.641851, z: -10}
+  m_LocalPosition: {x: 3.0862222, y: -8.285051, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9189,25 +9189,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0.75, y: -0.45, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
   m_LookaheadTime: 0.5
   m_LookaheadSmoothing: 3
   m_LookaheadIgnoreY: 0
   m_XDamping: 1.2
-  m_YDamping: 1.5
+  m_YDamping: 2
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.3
-  m_ScreenY: 0.7
+  m_ScreenY: 0.76
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.3
-  m_DeadZoneHeight: 0.4
+  m_DeadZoneWidth: 0.25
+  m_DeadZoneHeight: 0.14
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.375
-  m_SoftZoneHeight: 0.5
+  m_SoftZoneWidth: 0.4
+  m_SoftZoneHeight: 0.53
   m_BiasX: 0
-  m_BiasY: 0
+  m_BiasY: -0.28
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2
   m_AdjustmentMode: 0
@@ -10293,7 +10293,7 @@ MonoBehaviour:
   m_Follow: {fileID: 525588959}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 3.375
+    OrthographicSize: 4.34
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -10317,7 +10317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625511885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.1499999, y: -9.641851, z: -10}
+  m_LocalPosition: {x: 3.0862222, y: -8.285051, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10941,7 +10941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
       propertyPath: jumpHeight
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
       propertyPath: groundSpeed

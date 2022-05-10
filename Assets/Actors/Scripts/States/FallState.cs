@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class FallState : BehaviourState {
 
 	public override void OnEnter(Actor actor, Brain brain) {
@@ -15,13 +11,8 @@ public class FallState : BehaviourState {
 		actor.VelocityX = speed;
 	}
 	
-	public override BehaviourState OnHandleInput(Actor actor, Brain brain, InputType type, bool allowBuffer) {
-		if(allowBuffer && type is InputType.JumpStarted && !brain.Grounded)
-			brain.BufferUntilGrounded(type);
-		
-		return type switch {
-			InputType.Grounded => new MovementState(),
-			_ => null
-		};
-	}
+	public override BehaviourState OnHandleInput(Actor actor, Brain brain, InputType type) => type switch {
+		InputType.Grounded => new MovementState(),
+		_ => null
+	};
 }

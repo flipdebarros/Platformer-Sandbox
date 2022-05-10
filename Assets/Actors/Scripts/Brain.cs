@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +7,7 @@ using UnityEngine.InputSystem;
 	typeof(Animator))]
 public class Brain : MonoBehaviour {
 
-	[SerializeField] private Behaviour behaviour;
+	[SerializeField] private BehaviourMachine behaviour;
 	
 	[Header("Ground Detection")]
 	[SerializeField] private float coyoteTime;
@@ -32,8 +31,6 @@ public class Brain : MonoBehaviour {
 	private PlayerActions _input;
 
 	public float moveAxis { get; private set; }
-
-	private Dictionary<InputType, System.Action<InputAction.CallbackContext>> _handleInput;
 
 	private void OnEnable() {
 		_actor = GetComponent<Actor>();
@@ -72,7 +69,6 @@ public class Brain : MonoBehaviour {
 	private void CheckGround() {
 		//Reach Ground from falling
 		if (_actor.TouchingGround) {
-			if(!Grounded) FlushBuffer();
 			Grounded = true;
 			_inCoyoteTime = false;
 			return;
@@ -96,45 +92,27 @@ public class Brain : MonoBehaviour {
 
 	#region Input
 	private void InitInputs() {
-		_handleInput = new Dictionary<InputType, System.Action<InputAction.CallbackContext>>();
-		foreach (InputType type in System.Enum.GetValues(typeof(InputType))) {
-			_handleInput.Add(type, _ => behaviour.HandleInput(type));
-		}
-
-		_input.Gameplay.Move.performed += _handleInput[InputType.Move];
-		_input.Gameplay.Jump.started += _handleInput[InputType.JumpStarted];
-		_input.Gameplay.Jump.performed += _handleInput[InputType.JumpEnded];
+		_input.Gameplay.Move.performed += OnMove;
+		_input.Gameplay.Jump.performed += OnJump;
 	}
 	private void DestroyInputs() {
-		_input.Gameplay.Move.performed -= _handleInput[InputType.Move];
-		_input.Gameplay.Jump.started -= _handleInput[InputType.JumpStarted];
-		_input.Gameplay.Jump.performed -= _handleInput[InputType.JumpEnded];
-
-		_handleInput = null;
-	}
-
-	private struct BufferedInput {
-		public InputType type;
-		public float bufferTime;
-	}
-	private Queue<BufferedInput> _buffer;
-	public void BufferUntilGrounded(InputType input) {
-		_buffer ??= new Queue<BufferedInput>();
-		
-		_buffer.Enqueue(new BufferedInput {type = input, bufferTime = Time.time });
-	}
-
-	private void FlushBuffer() {
-		if(_buffer == null) return;
-		
-		while (_buffer.Count > 0) {
-			var input = _buffer.Dequeue();
-			var elapsed = Time.time - input.bufferTime;
-			if(elapsed <= bufferExpirationTime)
-				behaviour.HandleInput(input.type, false);
-		}
+		_input.Gameplay.Move.performed -= OnMove;
+		_input.Gameplay.Jump.performed -= OnJump;
 	}
 	
+	private void OnMove(InputAction.CallbackContext context) => behaviour.HandleInput(InputType.Move);
+	private void OnJump(InputAction.CallbackContext context) {
+		var pressed = context.ReadValueAsButton();
+
+		if (!Grounded && pressed) StartCoroutine(Buffer(InputType.JumpStarted, Time.time));
+		else behaviour.HandleInput(pressed ? InputType.JumpStarted : InputType.JumpEnded);
+	}
+
+	private IEnumerator Buffer(InputType input, float time) {
+		while (!Grounded) yield return null;
+		if(Time.time - time >= bufferExpirationTime) yield break; 
+		behaviour.HandleInput(input);
+	}
 
 	#endregion
 	
