@@ -24,24 +24,22 @@ public class Brain : MonoBehaviour {
 			_grounded = value;
 		}
 	}
-	
-	private Rigidbody2D _rigidbody2D;
+
 	private Actor _actor;
-	private SpriteRenderer _sprite;
 	private PlayerActions _input;
 
 	public float moveAxis { get; private set; }
 
 	private void OnEnable() {
 		_actor = GetComponent<Actor>();
-		_sprite = GetComponent<SpriteRenderer>();
+		var sprite = GetComponent<SpriteRenderer>();
 		var animator = GetComponent<Animator>();
 		
 		_input = new PlayerActions();
 		_input.Enable();
 		InitInputs();
 		
-		behaviour.Enable(_actor, this, animator);
+		behaviour.Enable(_actor, this, animator, sprite);
 	}
 	private void OnDisable() {
 		behaviour.Disable();
@@ -51,11 +49,12 @@ public class Brain : MonoBehaviour {
 	}
 	private void Update() {
 		moveAxis = _input.Gameplay.Move.ReadValue<float>();
-		_sprite.flipX = moveAxis == 0 ? _sprite.flipX : moveAxis < 0f;
+		_actor.FacingLeft = moveAxis == 0f ? _actor.FacingLeft : moveAxis < 0f;
 		
 		CheckGround();
+		CheckWall();
 		CheckFalling();
-		
+
 		behaviour.UpdateState();
 	}
 	private void CheckFalling() {
@@ -63,6 +62,11 @@ public class Brain : MonoBehaviour {
 		_isFalling = _actor.VelocityY < 0f && !Grounded;
 		if(!wasFalling && _isFalling)
 			behaviour.HandleInput(InputType.Fall);
+	}
+	
+	private void CheckWall() {
+		if(_actor.AgainstWall && Grounded) 
+			moveAxis = Mathf.Clamp(moveAxis, _actor.FacingLeft ? 0f : -1f, _actor.FacingLeft ? 1f : 0f);
 	}
 
 	#region Ground Checking

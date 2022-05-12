@@ -5,7 +5,7 @@ public class MovementState : BehaviourState {
 		actor.VelocityX = speed * brain.moveAxis;
 	}
 	
-	public override BehaviourState OnHandleInput(Actor actor, Brain brain, InputType type) => type switch {
+	public override BehaviourState OnHandleInput(Actor actor, Brain brain, InputType input) => input switch {
 		InputType.JumpStarted when brain.Grounded => new JumpState(),
 		InputType.Fall => new FallState(),
 		_ => null

@@ -4,6 +4,6 @@ public abstract class BehaviourState {
 	public virtual void OnExit(Actor actor, Brain brain) { }
 
 	public abstract void OnUpdate(Actor actor, Brain brain);
-	public abstract BehaviourState OnHandleInput(Actor actor, Brain brain, InputType type);
+	public abstract BehaviourState OnHandleInput(Actor actor, Brain brain, InputType input);
 	
 }

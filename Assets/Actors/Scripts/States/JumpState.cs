@@ -25,7 +25,7 @@ public class JumpState : BehaviourState {
 		actor.VelocityX = speed;
 	}
 
-	private void TerminateJump(Actor actor, Brain brain) {
+	private void TerminateJump(Actor actor) {
 		var terminationHeight = actor.JumpHeight - actor.MinJumpHeight;
 		var terminalVelocity = _initYVelocity * _initYVelocity;
 		terminalVelocity += 2 * _g * terminationHeight;
@@ -39,15 +39,15 @@ public class JumpState : BehaviourState {
 		actor.VelocityY = terminalVelocity;
 	}
 	
-	public override BehaviourState OnHandleInput(Actor actor, Brain brain, InputType type) {
-		if (type is not InputType.JumpEnded)
-			return type switch {
+	public override BehaviourState OnHandleInput(Actor actor, Brain brain, InputType input) {
+		if (input is not InputType.JumpEnded)
+			return input switch {
 				InputType.Grounded when brain.Grounded => new MovementState(),
 				InputType.Fall => new FallState(),
 				_ => null
 			};
 		
-		TerminateJump(actor, brain);
+		TerminateJump(actor);
 		return null;
 
 	}

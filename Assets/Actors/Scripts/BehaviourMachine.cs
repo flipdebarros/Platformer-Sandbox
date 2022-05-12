@@ -28,10 +28,10 @@ public class BehaviourMachine : ScriptableObject {
 	private Brain _brain;
 	private ActorAnimation _animation;
 
-	public void Enable(Actor actor, Brain brain, Animator animator) {
+	public void Enable(Actor actor, Brain brain, Animator animator, SpriteRenderer sprite) {
 		_actor = actor;
 		_brain = brain;
-		_animation = new ActorAnimation(animator);
+		_animation = new ActorAnimation(animator, sprite);
 
 		_initialState = new MovementState();
 		CurrentState = _initialState;

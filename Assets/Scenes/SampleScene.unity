@@ -8749,7 +8749,7 @@ CompositeCollider2D:
   m_GameObject: {fileID: 44969198}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 58dd17652322bb345b50cef77a6ba0ca, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -8964,7 +8964,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.6, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9007,7 +9007,7 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
+  m_SensorSize: {x: 1.7777778, y: 1}
   m_LensShift: {x: 0, y: 0}
   m_FocalLength: 50
   m_NormalizedViewPortRect:
@@ -9020,7 +9020,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 3.375
+  orthographic size: 4.6875
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -9044,7 +9044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286497426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.0862222, y: -8.285051, z: -10}
+  m_LocalPosition: {x: 2.7775998, y: -8.892651, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9198,16 +9198,16 @@ MonoBehaviour:
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.3
-  m_ScreenY: 0.76
+  m_ScreenY: 0.69000006
   m_CameraDistance: 10
   m_DeadZoneWidth: 0.25
-  m_DeadZoneHeight: 0.14
+  m_DeadZoneHeight: 0.26
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.4
   m_SoftZoneHeight: 0.53
   m_BiasX: 0
-  m_BiasY: -0.28
+  m_BiasY: -0.28000012
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2
   m_AdjustmentMode: 0
@@ -9607,7 +9607,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.6, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10137,7 +10137,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1310998129}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 58dd17652322bb345b50cef77a6ba0ca, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
@@ -10232,7 +10232,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.6, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10300,7 +10300,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.6, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10317,7 +10317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625511885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.0862222, y: -8.285051, z: -10}
+  m_LocalPosition: {x: 2.7775998, y: -8.892651, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10927,86 +10927,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: airSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: jumpPeak
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: jumpReach
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: jumpHeight
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: groundSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: minJumpHeight
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: groundContact.y
-      value: -0.453125
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: terminalVelocity
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 192
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: groundContact.width
-      value: 0.4405269
-      objectReference: {fileID: 0}
-    - target: {fileID: 525588970, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: groundContact.height
-      value: 0.03125
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999841536607613420, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: behaviour
-      value: 
-      objectReference: {fileID: 11400000, guid: 8326177fa753ddf41850a73b6b9e8109, type: 2}
-    - target: {fileID: 1999841536607613420, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: coyoteTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999841536607613420, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: groundContact.y
-      value: -0.453125
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999841536607613420, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 192
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999841536607613420, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: groundContact.width
-      value: 0.4405269
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999841536607613420, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: bufferExpirationTime
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999841536607613420, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: groundContact.height
-      value: 0.03125
-      objectReference: {fileID: 0}
-    - target: {fileID: 6760137168976460138, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6760137168976460138, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -449073703
-      objectReference: {fileID: 0}
     - target: {fileID: 6760137168976460139, guid: 75ed01d605321564d8ac920290b0fe68, type: 3}
       propertyPath: m_RootOrder
       value: 3

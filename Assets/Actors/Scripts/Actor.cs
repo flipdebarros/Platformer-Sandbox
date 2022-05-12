@@ -16,6 +16,7 @@ public class Actor : MonoBehaviour {
 	public float JumpHeight => jumpHeight;
 	public float JumpReach => jumpReach;
 	public float JumpPeak => jumpPeak;
+	public bool FacingLeft { get; set; }
 
 	private Rigidbody2D _rigidbody2D;
 
@@ -25,12 +26,20 @@ public class Actor : MonoBehaviour {
 	[SerializeField]
 	private LayerMask groundLayer;
 	public bool TouchingGround { get; private set; }
+	
+	[Header("Wall Detection")]
+	[SerializeField] 
+	private Rect wallContact;
+	[SerializeField]
+	private LayerMask wallLayer;
+	public bool AgainstWall { get; private set; }
 
 	private void OnEnable() {
 		_rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
 	private void Update() {
+		CheckWall();
 		CheckGround();
 		ClampVelocity();
 	}
@@ -40,8 +49,7 @@ public class Actor : MonoBehaviour {
 	}
 
 	private void CheckGround() { 
-		var box = groundContact;
-		box.position += (Vector2) transform.position - groundContact.size / 2f;
+		var box = Centralize(groundContact);
 		var hit = Physics2D.BoxCast(box.position, box.size, 0f, Vector2.zero, Mathf.Infinity, groundLayer);
 
 		var goingUp = VelocityY > 0f;
@@ -49,7 +57,16 @@ public class Actor : MonoBehaviour {
 
 		TouchingGround = hit && hitFromAbove && !goingUp;
 	}
-	
+
+	private void CheckWall() {
+		var box = wallContact;
+		box.position = Vector2.Scale(box.position, new Vector2(FacingLeft ? -1f : 1f, 1f));
+		box = Centralize(box);
+		
+		var hit = Physics2D.BoxCast(box.position, box.size, 0f, Vector2.zero, Mathf.Infinity, wallLayer);
+		AgainstWall = hit;
+	}
+
 	#region Rigidbody Acessors
 
 	private const float deadZone = 0.1f;
@@ -69,4 +86,26 @@ public class Actor : MonoBehaviour {
 	}
 
 	#endregion
+
+	private void OnDrawGizmosSelected() {
+		Gizmos.color = Color.blue;
+		
+		var box = Centralize(groundContact);
+		Gizmos.DrawWireCube(box.center, box.size);
+
+		Gizmos.color = Color.red;
+		
+		box = wallContact;
+		box.position = Vector2.Scale(box.position, new Vector2(FacingLeft ? -1f : 1f, 1f));
+		box = Centralize(box);
+		Gizmos.DrawWireCube(box.center, box.size);
+
+		Gizmos.color = Color.white;
+	}
+
+	private Rect Centralize(Rect rect) {
+		var box = rect;
+		box.position += (Vector2) transform.position - rect.size / 2f;
+		return box;
+	}
 }
