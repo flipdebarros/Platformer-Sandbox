@@ -162,8 +162,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 15}
-        - {x: 16, y: 15}
+        - {x: -16, y: 12}
+        - {x: 16, y: 12}
         - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
@@ -187,8 +187,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 15}
-        - {x: 16, y: 15}
+        - {x: -16, y: 12}
+        - {x: 16, y: 12}
         - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
@@ -212,8 +212,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 15}
-        - {x: 16, y: 15}
+        - {x: -16, y: 12}
+        - {x: 16, y: 12}
         - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
@@ -237,8 +237,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 15}
-        - {x: 16, y: 15}
+        - {x: -16, y: 12}
+        - {x: 16, y: 12}
         - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
@@ -283,8 +283,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 15}
-        - {x: 16, y: 15}
+        - {x: -16, y: 12}
+        - {x: 16, y: 12}
         - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
@@ -308,8 +308,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 15}
-        - {x: 16, y: 15}
+        - {x: -16, y: 12}
+        - {x: 16, y: 12}
         - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
@@ -333,8 +333,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 15}
-        - {x: 16, y: 15}
+        - {x: -16, y: 12}
+        - {x: 16, y: 12}
         - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
@@ -358,8 +358,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 15}
-        - {x: 16, y: 15}
+        - {x: -16, y: 12}
+        - {x: 16, y: 12}
         - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []

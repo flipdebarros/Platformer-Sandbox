@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4126126234494814283}
   - component: {fileID: 1533435108132937328}
   - component: {fileID: 525588970}
+  - component: {fileID: 6760137168415054608}
   - component: {fileID: 1999841536607613420}
   - component: {fileID: 562223636828386396}
   - component: {fileID: 2616536844379086679}
@@ -145,17 +146,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundSpeed: 5
-  airSpeed: 5
-  jumpHeight: 1.8
-  minJumpHeight: 0.3
-  jumpReach: 3
-  jumpPeak: 0.6
   terminalVelocity: 12
+  jump: {fileID: 0}
   groundContact:
     serializedVersion: 2
     x: 0
     y: -0.453125
-    width: 0.4405269
+    width: 0.4717769
     height: 0.03125
   groundLayer:
     serializedVersion: 2
@@ -169,6 +166,23 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &6760137168415054608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6760137168976460141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327ff27465b9ce94382b60b20eb42253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: -0.46875}
+  jumpHeight: 2
+  jumpReach: 3
+  apexBias: 0.6
+  airSpeed: 5.97
 --- !u!114 &1999841536607613420
 MonoBehaviour:
   m_ObjectHideFlags: 0

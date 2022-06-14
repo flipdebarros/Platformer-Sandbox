@@ -1,21 +1,17 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Brain))]
+[RequireComponent(typeof(Brain),
+	typeof(Rigidbody2D),
+	typeof(JumpCurve))]
 public class Actor : MonoBehaviour {
 	[SerializeField] private float groundSpeed;
-	[SerializeField] private float airSpeed;
-	[SerializeField] private float jumpHeight;
-	[SerializeField] private float minJumpHeight;
-	[SerializeField] private float jumpReach;
-	[SerializeField] [Range(0f, 1f)] private float jumpPeak = 0.5f;
 	[SerializeField] private float terminalVelocity;
 	
+	private JumpCurve _jump;
+	
 	public float GroundSpeed => groundSpeed;
-	public float AirSpeed => airSpeed;
-	public float MinJumpHeight => minJumpHeight;
-	public float JumpHeight => jumpHeight;
-	public float JumpReach => jumpReach;
-	public float JumpPeak => jumpPeak;
+	public JumpCurve Jump => _jump ??= GetComponent<JumpCurve>();
+	public float MinJumpHeight => _jump.Height;
 	public bool FacingLeft { get; set; }
 
 	private Rigidbody2D _rigidbody2D;
@@ -50,19 +46,16 @@ public class Actor : MonoBehaviour {
 
 	private void CheckGround() { 
 		var box = Centralize(groundContact);
-		var hit = Physics2D.BoxCast(box.position, box.size, 0f, Vector2.zero, Mathf.Infinity, groundLayer);
-
+		var hit = Physics2D.BoxCast(box.position, box.size, 0f, Vector2.down, 1f/32f, groundLayer);
+		
 		var goingUp = VelocityY > 0f;
 		var hitFromAbove = hit.normal.y > 0f;
-
+		
 		TouchingGround = hit && hitFromAbove && !goingUp;
 	}
 
 	private void CheckWall() {
-		var box = wallContact;
-		box.position = Vector2.Scale(box.position, new Vector2(FacingLeft ? -1f : 1f, 1f));
-		box = Centralize(box);
-		
+		var box = Centralize(wallContact);
 		var hit = Physics2D.BoxCast(box.position, box.size, 0f, Vector2.zero, Mathf.Infinity, wallLayer);
 		AgainstWall = hit;
 	}
@@ -91,21 +84,19 @@ public class Actor : MonoBehaviour {
 		Gizmos.color = Color.blue;
 		
 		var box = Centralize(groundContact);
-		Gizmos.DrawWireCube(box.center, box.size);
+		Gizmos.DrawWireCube(box.position, box.size);
 
 		Gizmos.color = Color.red;
 		
-		box = wallContact;
-		box.position = Vector2.Scale(box.position, new Vector2(FacingLeft ? -1f : 1f, 1f));
-		box = Centralize(box);
-		Gizmos.DrawWireCube(box.center, box.size);
+		box = Centralize(wallContact);
+		Gizmos.DrawWireCube(box.position, box.size);
 
 		Gizmos.color = Color.white;
 	}
 
 	private Rect Centralize(Rect rect) {
 		var box = rect;
-		box.position += (Vector2) transform.position - rect.size / 2f;
+		box.position = Vector2.Scale(box.position, new Vector2(FacingLeft ? -1f : 1f, 1f)) + (Vector2) transform.position;
 		return box;
 	}
 }

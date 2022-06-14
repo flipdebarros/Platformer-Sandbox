@@ -8,10 +8,14 @@ public class JumpState : BehaviourState {
 	private float _startJumpTime;
 	
 	public override void OnEnter(Actor actor, Brain brain) {
-		_timeToPeak = actor.JumpReach * actor.JumpPeak / actor.GroundSpeed;
-		var timeOfFlight = _timeToPeak * 2f;
-		_g = -8f * actor.JumpHeight / (timeOfFlight * timeOfFlight);
-		_initYVelocity = 4f * actor.JumpHeight / timeOfFlight;
+		// _timeToPeak = actor.JumpReach * actor.JumpPeak / actor.AirSpeed;
+		// var timeOfFlight = _timeToPeak * 2f;
+		// _g = -8f * actor.JumpHeight / (timeOfFlight * timeOfFlight);
+		// _initYVelocity = 4f * actor.JumpHeight / timeOfFlight;
+
+		_timeToPeak = actor.Jump.RiseTime;
+		_initYVelocity = actor.Jump.InitYVelocity;
+		_g = actor.Jump.gRise;
 		
 		actor.VelocityY = _initYVelocity;
 		actor.Gravity = _g;
@@ -21,12 +25,12 @@ public class JumpState : BehaviourState {
 	}
 
 	public override void OnUpdate(Actor actor, Brain brain) {
-		var speed = actor.AirSpeed * brain.moveAxis;
+		var speed = actor.Jump.AirSpeed * brain.moveAxis;
 		actor.VelocityX = speed;
 	}
 
 	private void TerminateJump(Actor actor) {
-		var terminationHeight = actor.JumpHeight - actor.MinJumpHeight;
+		var terminationHeight = actor.Jump.Height - actor.MinJumpHeight;
 		var terminalVelocity = _initYVelocity * _initYVelocity;
 		terminalVelocity += 2 * _g * terminationHeight;
 		terminalVelocity = Mathf.Sqrt(terminalVelocity);

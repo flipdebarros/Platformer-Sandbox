@@ -1,13 +1,12 @@
 public class FallState : BehaviourState {
 
 	public override void OnEnter(Actor actor, Brain brain) {
-		var timeOfFlight = actor.JumpReach * (1f - actor.JumpPeak) * 2f / actor.AirSpeed;
-		var g = -8f * actor.JumpHeight / (timeOfFlight * timeOfFlight);
+		var g = actor.Jump.gFall;
 		actor.Gravity = g;
 	}
 
 	public override void OnUpdate(Actor actor, Brain brain) {
-		var speed = actor.AirSpeed * brain.moveAxis;
+		var speed = actor.Jump.AirSpeed * brain.moveAxis;
 		actor.VelocityX = speed;
 	}
 	
